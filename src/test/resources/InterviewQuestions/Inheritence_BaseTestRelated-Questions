@@ -1,0 +1,65 @@
+Q: what is NUll PointerException? 
+	if in the BaseTest String browser= "jfsjkn"; instead of chrome, safari, Edge
+		--means driver is not there or wrote wrongly then you'll get NullPointException.
+	
+ **	Parent >> Child = Is a relationship. 
+		
+Q: Parent's Properties (constructor, method, variables) can be used by child. Child by default inherit parent's properties.
+ 
+Q: But Parents can not use child's properties. 
+ 		** It's a One Way Relationship ** OR IS A Relationship
+ 		
+It can go Grand Parent >> Parent >> Child 
+
+Q: class  Child extends parent class{ }
+
+ 	e.g: public class LoginTest extends BaseTest {
+											}
+Q: Properties instantiate by the constructor 
+		What is job of a constructor? 
+		=instanciate instance properties. 
+		
+Q: Why do you need to write "Public WebDriver driver" in Base class? 
+	What is job of a constructor? 
+		=instanciate instance properties. 
+	if one of the properties of base class is not public, the constructor of child class (from another package)cannot instantiate this parent property 
+	becoz it is not public. Thats why we need to write WebDriver driver access modifier as Public WebDriver driver so any child class can have access. 
+	
+Q: If using TestNG ** WITHOUT a @Test annotation application will not run. 
+	It has to have {@BeforeMethod >>toOpepApp, @Test >> At least a test, & @AfterMethod >> toCloseApp}
+	
+*** BaseTest Structure ***
+
+ public class BaseTest {
+ 
+ 	** public	WebDriver driver;
+ 		
+ 		@BeforeMethod
+ 		public void openApp(){
+ 		
+ 		int age=18;				** String browser = "chrome";
+ 		
+ 		if(age==18) {					if(browser.equalsIgnoreCase("chrome")) {
+ 											driver = new ChromeDriver();
+ 			syso "i am adult"			  } else if (browser.equalIgnoreCase(Safari)) {
+ 												driver = new SafariDriver();
+ 									 
+ 									     } else { 
+ 									     		 driver = new ChromeDriver();
+ 									    		 syso " wrong browser, running default browser" }
+ 		} else if (age <17) {
+ 		    syso "i am teen"
+ 		}
+ 		
+ 		driver.get("ww.facebook.com");
+ 		driver.manage().windows().maximize();
+ 		driver.manage().timeouts().implicitelyWait(Duration.ofSeconds(10));
+ 		
+ 		}
+ 		
+ 		@AfterMethod
+ 		public void closeApp(){
+ 		if (driver!=null){       *** driver jodi present thake then quit the webdriver session.
+ 		driver.quit();
+ 		}
+ 		}

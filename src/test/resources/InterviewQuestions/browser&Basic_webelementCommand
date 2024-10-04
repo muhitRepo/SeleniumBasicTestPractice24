@@ -1,0 +1,251 @@
+1. How to open a browser?  
+
+			Ans: 1) I will use WebDriver driver; 2) and driver = new ChromeDriver;   
+	
+	 public class HowToOpenBrowser {  <<  (class)
+
+		 WebDriver driver;                          // WebDriver is Global instance variable
+	
+	  public static void main(String[] args) {				// main method
+	  
+			HowToOpenBrowser op = new HowToOpenBrowser();  // Class c = new Class; >> c bring me openBrowser method. Creating constructor
+			op.openBrowser();                              // method calling. op execute the openBrowser method
+	}
+		public void openBrowser() {                        // method name 'openBrowser'
+		
+			driver = new ChromeDriver();				// This opens the Browser 
+			//driver = new SafariDriver();  				
+	}
+}
+
+2. How to open an application? 
+	
+			Answer:   1.  I use WebDriver driver = new ChromeDriver();  Basically opening Chrome browser
+					  2.  and use driver.get method and pass app URL: driver.get("app url ") such like "www.facebook.com"
+				That will open the browser first and then facebook.com application on Chrome. 
+				
+	public class HowToOpenApp {  <<  (class)
+
+		    WebDriver driver;                                 // WebDriver is Global instance variable
+	
+	    	public static void main(String[] args) {				
+			HowToOpenApp op = new HowToOpenApp();       // Class c = new Class; >> c bring me openApp method. Creating constructor op. 
+			op.openApp();                              // method calling. op execute the openApp method
+	}
+
+		    public void openApp() {                        // method name 'openBrowser'
+		    
+		    	driver = new ChromeDriver();		       // 1st opens the browser
+				driver.get("https://www.facebook.com/");  // 2nd Opens the facebook.com app
+	}
+}		
+
+3. What is browser command? 
+		= To handle the browser. How Browser exe. file communicate with the app. Browser Open the app, browser give me the title, Brwr give me the Url, go back, go forward, browser pause for few sec, maximize,
+	minimize the window, These are all browser command. 
+	
+4. How to get page title? OR How do you assert a Title? 
+
+			I open Chrome browser with WebDriver driver = new ChromeDriver(); 
+			I use driver.get and pass the url facebook.com
+			Then I said driver getTile. And that's my String Expected Title
+			
+5. How do you know you are on the right app? = I do URL Test making sure it's the expected url. 
+												I do Title test. These two together will tell me ok the domain server is right and secure. 
+												make sure the title spelling is right.
+												The logo or text is ok. 
+												I can login, using credentials. To do these regular testings, selenium has 13 diff. methods. 
+												This is called selenium interface.
+			To handle regular testings, Selenium uses 13 Methods that we need to learn to test. 
+			
+			
+6. What is web driver interface? Study July 2024 Manual Testing Selenium basic Day 1. (2:55:00 hrs)
+	 
+		The WebDriver interface in Selenium is the primary interface used for automating and controlling web browser interactions. 
+		
+		It provides all necessary methods for browser actions such as opening & closing page, interacting with elements, and navigating through the web.
+		
+		To handle regular testings, Selenium has 13 Methods. It's called Selenium Webdriver interface. So, interface has 13 methods.
+		Interface is authority. It declares the rules. But it doesn't execute the rules. 
+		
+		Interface only declares methods. But do not execute or implement any rules. Meaning there is no coding site. 
+		Interface just declare the rules to follow. 
+		Its associate Class or Child implements the rules. 
+		
+
+
+Q. What is the super interface of selenium?
+	
+	The super interface of all the main WebDriver interfaces and classes is the "SearchContext interface". SearchContext is the parent of WebDriver
+		SearchContext is the topmost interface in the Selenium WebDriver hierarchy.
+			It defines two key methods for locating web elements:
+			
+				1. findElement(By by) – Finds a single web element.
+				2. findElements(By by) – Finds a list of web elements.
+				
+	Basic structure:
+		SearchContext (super interface)
+			WebDriver (extends SearchContext)
+				>RemoteWebDriver (implements WebDriver)
+				   >ChromeDriver, FirefoxDriver, etc. (subclasses of RemoteWebDriver)
+	This means all WebDriver implementations (like ChromeDriver, FirefoxDriver, etc.) indirectly implement the SearchContext interface.
+
+
+Q: How many methods in super interface and what are they?
+	
+		The SearchContext interface contains two methods:
+
+			findElement(By by) – for finding a single element on WebPage. or  find single web element on a page
+			findElements(By by) – for finding multiple elements on WebPage or  find web elements on a page
+	
+	
+		
+Q. Can you name some of web driver interface methods?
+		a) get(String url): Opens the specified URL in the browser. e.g. driver.get("https://www.facebook.com");
+		b) getCurrentUrl(): Retrieves the URL of the current webpage. e.g. driver.getCurrentUrl();
+		c) getTitle():      Retrieves the title of the current webpage. e.g String title = driver.getTitle();
+		d) findElement(By by): Finds a single web element on the webpage. e.g: WebElement element = driver.findElement(By.id("id value"));
+		  findElements(By by): Finds multiple web elements on the webpage.e.g List<WebElement> elements = driver.findElements(By.className("class_name"));
+		e) manage(): Returns an interface to manage browser settings like cookies, timeouts, and windows. e.g. driver.manage().window().maximize();
+		f) navigate():  navigation within the browser (e.g., back, forward, refresh). e.g. driver.navigate().back();
+		g) quit(): Closes all browser windows and ends the WebDriver session. e.g driver.quit();
+		h) close(): Closes the current browser window. driver.close();
+		
+	get method, Url method, Title method, quit method. 
+
+8. How to get page title? OR How do you assert a Title? 
+
+			I open Chrome browser with WebDriver driver = new ChromeDriver(); 
+			I use driver.get(String url) method and pass the url www.facebook.com or driver.get("https://www.facebook.com"); >> This will open the application site
+			
+			Then I use:  >> driver getTile. And that's my String Expected Title
+			
+	public void getFbTtile() {            >> METHOD
+			String fbTitle = driver.getTitle();  >> making a variable out of driver.getTitle();
+			System.out.println(fbTitle);         >> this will print the page title "Facebook - log in or sign up" in the console. 
+			
+			
+		Another way using assert way>>	
+			
+	public void getAssertTitle() {
+	
+		String expectedTitle =driver.getTitle();
+		String actualTitle = "Facebook - log in or sign up";
+		
+	System.out.println("FB title is >>" + expectedTitle);
+	
+    Assert.assertEquals(actualTitle, expectedTitle);
+			
+
+9. How to get current url? Using driver.getCurrentUrl method
+	
+		public void getFbUrl() {
+		String facebookCurrentUrl =driver.getCurrentUrl();
+		System.out.println(facebookCurrentUrl);
+	}
+	
+	
+Q. How to close a browser?
+	
+		driver.close() method  // Will close the current window, where the cursor is working on
+		
+Q: How to quit a browser?
+	
+		WebDriver driver; import WebDriver; 
+		driver.quit() method         // Will close the whole browser, no matter how many windows are open.
+
+
+
+Q: What is the difference between close and quit command?
+	 quit(): Closes all browser windows and ends the WebDriver session. e.g driver.quit();
+	 close(): Closes the current browser window.  e.g driver.close();
+	
+
+Q:	How to maximize a window? = driver.manage().window().maximize();
+	
+	    WebDriver driver;
+	 	driver = new ChromeDriver();
+		driver.get("https://www.facebook.com/");
+		
+		driver.manage().window().maximize();
+	
+	 	
+Q:	How to set size for a window?
+	
+		= System.out.println ( driver.manage().windows().getSize() ) 
+		
+		
+Q:	How to get the position of the window?
+	
+		= System.out.println (driver.manage().windows().getPosition() ); 
+		
+		
+Q: What is nested interface in selenium?
+	
+		A nested interface is an interface that is declared within another interface or class. 
+		It is essentially an interface inside another interface or class. Nested interfaces are used to making the API more structured and easier to use.
+	
+	Can you name few nested interface in selenium?
+	
+		Examples: 
+		
+		
+	1. WebDriver.Navigation: This interface is nested within the WebDriver interface and provides methods for browser navigation, such as moving back, forward, refreshing the page, etc.
+		
+		Methods in WebDriver.Navigation: void back(); void forward(); void refresh(); void to(String url): Navigate to a specific URL.
+		
+		E.g:  WebDriver driver = new ChromeDriver(); 
+		      driver.navigate().back();  // Using the navigation interface
+		      driver.navigate().forward();
+		      
+	2. WebDriver.Options:  Options interface provides methods for managing browser-specific settings such as cookies, timeouts, and window management.
+	Methods in WebDriver.Options:
+			Timeouts timeouts(): Manages timeouts.
+			Window window(): Manages the browser window. E.g driver.manage().window().maximize();
+			
+	3. WebDriver.Timeouts: 
+	Methods in WebDriver.Timeouts:
+			Timeouts implicitlyWait(long time, TimeUnit unit): Sets an implicit wait timeout. e.g: driver.manage().timeouts().implicitlyWait(DurationofSeconds(10)); 
+			Timeouts pageLoadTimeout(long time, TimeUnit unit): Sets the timeout for page loads. 
+			
+	4. WebDriver.Window:
+			Methods in WebDriver.Window:
+		void maximize(): driver.manage().window().maximize();
+		void minimize(): driver.manage().window().minimize();
+		void fullscreen(): driver.manage().window().fullscreen();
+	
+Q: What is option interface, can you name few options interface methods?
+	
+		Key Uses of the Options Interface: 
+	Managing Cookies: Adding, deleting, or retrieving cookies.
+	Managing Timeouts: Setting timeouts for page loads, script execution, and element searches.
+	Managing Browser Window: Controlling the browser window (e.g., maximizing, minimizing, resizing).
+	
+	Few options interface methods: 
+	 >> timeouts(): Returns a WebDriver.Timeouts object that allows managing different timeouts, such as implicit waits, page load timeouts, and script timeouts.
+			e.g: driver.manage().timeouts().implicitlyWait(DurationofSeconds(10)); 
+	 >> window(): Returns a WebDriver.Window object that allows managing browser window operations such as resizing, maximizing, minimizing, and full-screen mode.
+			e.g. driver.manage().window().maximize();
+			
+Q: What is window interface, can you name few window interface methods? 
+
+	WebDriver.Window: Manages browser window operations like maximizing, minimizing, or resizing the window.
+	
+		Example methods:
+		maximize()
+		minimize()
+		fullscreen()
+
+
+Q: What is navigation command? Navigation command provides controls for browser navigation, such as moving back, forward, refreshing the page, etc.
+
+Q: How to go backward or forward?
+	
+	WebDriver driver = new ChromeDriver(); 
+		      driver.navigate().back();  // Using the navigation interface
+		      driver.navigate().forward();
+	 
+Q: How to refresh a browser?
+		driver.navigate().refresh()
+		
+Q: What is method chaining?
