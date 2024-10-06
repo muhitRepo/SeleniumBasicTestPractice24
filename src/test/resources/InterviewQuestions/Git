@@ -1,0 +1,12 @@
+Git Push == pushing codes from eclipse to GitHub
+
+1. Right click on Project >> Properties >> click the arrow and Go to the path directory of the Selenium workspace folder
+2. Open it with GitBash or In Terminal
+3. Type git status
+4. check if it upto date or not. If anything new then it's gonna show. 
+5. Then type git add . (git add all)
+6. git commit -m "name of the push"
+7. git push
+8. it's gonna generate this type of msg: remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+9. Will give a link of the pushed codes: like this >> To https://github.com/muhitRepo/SeleniumBasicTestPractice24.git
+10. It will directly stored up to the git hub accnt. (if the repo of the Project is already created before or used)

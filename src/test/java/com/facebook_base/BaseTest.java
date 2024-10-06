@@ -49,7 +49,7 @@ public class BaseTest {
 
 	} // ** WITHOUT a @Test annotation application will not run. It has to have {OpepApp, Test, CloseApp}
 
-	@AfterMethod
+	//@AfterMethod
 	public void closeApp() {
 		if (driver != null) { // where driver is not null, then driver quit.
 			driver.quit();

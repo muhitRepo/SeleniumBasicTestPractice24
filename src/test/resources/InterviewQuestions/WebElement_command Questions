@@ -1,0 +1,128 @@
+Q: How many ways can you manage input box/ send button? 
+
+		driver.findElement(By.id("email")).sendKeys("fks@likemail.com");
+		driver.findElement(By.id("email")).clear();
+		
+	// making variable out of (driver.findElemnt By)
+	
+	  WebElement userName = driver.findElement(By.id("email"));
+	  
+		userName.clear();
+		userName.sendKeys("jkkj@bamail.com");
+		
+Q: WebElement loginButton=driver.findElement(By.name("login"));
+
+		//how many ways can you click in a button?
+		//loginButton.click();
+		
+		   2nd way of click
+		//loginButton.submit();
+		
+		  3rd way of click
+		loginButton.sendKeys(Keys.ENTER);
+		
+		/*
+		 * WebElement is the data type
+		 * loginButton is the variable name
+		 * driver.findElement(By.name("login")); is the value
+		 */
+		 
+Q: How link works? 
+
+	/*
+		 * <a href="https://www.facebook.com/recover/initiate/
+		 * ?privacy_mutation_token=eyJ0eXBlIjowLCJjcmVhdGlvbl90aW1lIjoxNzA0ODQ0NjE4LCJjYWxsc2l0ZV9pZCI6MzgxMjI5MDc5NTc1OTQ2fQ%3D%3D&amp;
+		 * ars=facebook_login">Forgot password?  <   /a>
+		 * 
+		 * link starts with <a href /a>== a tag
+		 
+		 * link text= >Forgot password?<
+		 // the text will be inside < > angel brackets
+		 
+		 * e.g. driver.findElement(By.linkText("Forgot password?")).click();
+		 
+		 OR WebElement linkText=driver.findElement(By.linkText("Forgot password?"));
+		 
+		 linkText.click();
+		 */
+		 
+Q: why do you use partialLinkText? 
+
+	If the link text value is too big, then you're not supposed to take the whole word. Take small part of it.
+		 partialLinkText :
+		**  avoid compound values
+		
+	Q: what is compound values= such as "Visit our Contact Uploading & Non-Users Notice" 
+			 values are too big, 
+			 space in the middle, 
+			 number in the middle, 
+			 special character in the middle
+		*/
+		
+Q: Radio Button or Check box
+
+	 * what is radio button: only 1 option is clickable. 
+	 * For Checkbox multiple options is clickable
+	 * How do we select radio button or check box ? == (.click)
+	 * Radio button most of the time boolean condition (True or False)
+	 */
+	 Example: 
+	 
+	 public void radioButtonTest() {
+	 
+		WebElement female=driver.findElement(By.id("sex"));
+		female.click();
+		
+		boolean gender=female.isSelected(); // is it female selected or not? == true or false
+		System.out.println(gender);
+		
+	Or   //System.out.println(female.isSelected() + " yeah it female sex selected");
+		
+		if(gender) {   							  << putting if and else condition
+			System.out.println("user is female");
+		}else  {
+			System.out.println("user is male");
+		}
+	}
+	
+Q: Drop Down
+
+	3 ways to select 
+		> Select by visible text
+		> Select by value
+		> select by index
+		
+	Try always with visible test. 
+	
+	Can also DeSelect. 
+	
+Q: How do you manage/ handle drop down in selenium? == By select method. Selenium has inbuilt method called Select
+
+	==> Select select = new Select(nested WebElement); 
+		Here:  Select(month); is nested WebElement is the variable. Import Select method. 
+		Inside the Select method we are importing another method in it. 
+	
+Example
+	DropDown of Month Day year
+	1. public void selectByvisibleText() {
+		
+		WebElement month =driver.findElement(By.id("month"));
+		month.click();
+		
+		Select select = new Select(month); >> month is the variable which is nested WebElement inside Select method.
+		Select select = new Select(month); 
+		
+		select.getFirstSelectedOption(); 					//  by default what is selected. 
+		System.out.println(select.getFirstSelectedOption()); // Print what is selected by default.
+		
+		select.selectByVisibleText("Mar");				// Select month "Mar" from the dropDown.
+	
+	2. 
+	public void selectByVisibleIndex() {
+		
+		WebElement day=driver.findElement(By.id("day"));
+		day.click();
+		Select select = new Select(day); 
+		select.selectByIndex(25); // Index starts from zero. so 25 would be 26. 
+		select.selectByIndex(0); //Index= 0; 1st day of the month
+	
